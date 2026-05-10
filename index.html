@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fatema T. Johra | Senior DFIR & Incident Response Portfolio</title>
-  <meta name="description" content="Cybersecurity portfolio for Fatema T. Johra specializing in digital forensics, incident response, cloud security, and federal cybersecurity operations." />
+  <title>Fatema Johra | Cybersecurity Portfolio</title>
+  <meta name="description" content="Cybersecurity portfolio for Fatema Johra focused on incident response, digital forensics, cloud security, and threat detection." />
+
   <style>
     * {
       box-sizing: border-box;
@@ -14,13 +15,13 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top, #111827 0%, #020617 55%, #000000 100%);
+      background: #0b0f14;
       color: #e5e7eb;
       line-height: 1.6;
     }
 
     a {
-      color: #38bdf8;
+      color: #b794f4;
       text-decoration: none;
     }
 
@@ -35,27 +36,24 @@
     }
 
     header {
-      padding: 28px 0;
-      border-bottom: 1px solid #1e293b;
-      background: #020617;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      padding: 24px 0;
+      background: #080b10;
+      border-bottom: 1px solid #1f2937;
     }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
     .brand {
-      font-weight: 700;
-      letter-spacing: 0.5px;
       color: #ffffff;
-      font-size: 1.1rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.4px;
     }
 
     .nav-links {
@@ -66,62 +64,76 @@
     }
 
     .hero {
-      padding: 110px 0 90px;
-      background:
-        linear-gradient(rgba(2,6,23,0.85), rgba(2,6,23,0.96)),
-        radial-gradient(circle at top right, rgba(56,189,248,0.15), transparent 35%),
-        radial-gradient(circle at bottom left, rgba(59,130,246,0.18), transparent 30%);
+      padding: 46px 0 70px;
+      background: linear-gradient(135deg, #0b0f14 0%, #111827 60%, #1f1b2e 100%);
+    }
+
+    .banner {
+      width: 100%;
+      border-radius: 18px;
+      margin-bottom: 42px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+      display: block;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.4fr 0.8fr;
-      gap: 40px;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 34px;
       align-items: center;
     }
 
     .eyebrow {
-      color: #38bdf8;
+      color: #b794f4;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 1.5px;
-      margin-bottom: 14px;
+      letter-spacing: 1.4px;
+      margin-bottom: 12px;
     }
 
     h1 {
-      font-size: clamp(2.3rem, 6vw, 4.5rem);
-      line-height: 1.05;
       color: #ffffff;
-      margin-bottom: 18px;
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.12;
+      margin-bottom: 14px;
+      letter-spacing: -0.8px;
+    }
+
+    .hero-title-small {
+      color: #ffffff;
+      font-size: clamp(1.65rem, 4vw, 2.35rem);
+      line-height: 1.18;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
     }
 
     .subtitle {
-      font-size: 1.18rem;
-      color: #cbd5e1;
-      max-width: 760px;
+      color: #d1d5db;
+      font-size: 1.02rem;
+      max-width: 780px;
       margin-bottom: 24px;
     }
 
     .button-row {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-top: 24px;
+      margin-top: 22px;
     }
 
     .btn {
       display: inline-block;
-      padding: 12px 18px;
+      padding: 11px 17px;
       border-radius: 999px;
       font-weight: 700;
-      border: 1px solid #38bdf8;
-      transition: all 0.2s ease;
+      border: 1px solid #b794f4;
+      transition: 0.2s ease;
     }
 
     .btn-primary {
-      background: #38bdf8;
-      color: #020617;
+      background: #b794f4;
+      color: #0b0f14;
     }
 
     .btn-secondary {
@@ -134,50 +146,54 @@
     }
 
     .profile-card {
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid #334155;
-      border-radius: 22px;
-      padding: 26px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+      background: rgba(17, 24, 39, 0.88);
+      border: 1px solid #374151;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
     }
 
     .profile-card h2 {
       color: #ffffff;
-      margin-bottom: 14px;
-      font-size: 1.25rem;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .profile-card p {
+      color: #d1d5db;
     }
 
     .badge-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 9px;
       margin-top: 18px;
     }
 
     .badge {
       padding: 7px 10px;
-      border: 1px solid #334155;
       border-radius: 999px;
-      color: #cbd5e1;
-      font-size: 0.86rem;
-      background: #111827;
+      border: 1px solid #374151;
+      background: #0f172a;
+      color: #d1d5db;
+      font-size: 0.85rem;
     }
 
     section {
-      padding: 70px 0;
-      border-bottom: 1px solid #1e293b;
+      padding: 66px 0;
+      border-bottom: 1px solid #1f2937;
     }
 
     .section-title {
       color: #ffffff;
-      font-size: 2rem;
+      font-size: 1.85rem;
       margin-bottom: 12px;
     }
 
     .section-intro {
-      color: #cbd5e1;
+      color: #d1d5db;
       max-width: 780px;
-      margin-bottom: 32px;
+      margin-bottom: 30px;
     }
 
     .grid {
@@ -186,29 +202,34 @@
       gap: 20px;
     }
 
-    .card {
+    .card,
+    .timeline-item,
+    .skill-box {
       background: #111827;
-      border: 1px solid #334155;
+      border: 1px solid #374151;
       border-radius: 18px;
       padding: 22px;
-      min-height: 210px;
     }
 
-    .card h3 {
+    .card h3,
+    .timeline-item h3,
+    .skill-box h3 {
       color: #ffffff;
       margin-bottom: 10px;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
     }
 
-    .card p {
-      color: #cbd5e1;
+    .card p,
+    .timeline-item p,
+    .skill-box p {
+      color: #d1d5db;
       font-size: 0.95rem;
     }
 
     .card ul {
       margin-top: 12px;
       padding-left: 18px;
-      color: #cbd5e1;
+      color: #d1d5db;
       font-size: 0.95rem;
     }
 
@@ -217,20 +238,8 @@
       gap: 18px;
     }
 
-    .timeline-item {
-      background: #111827;
-      border: 1px solid #334155;
-      border-radius: 18px;
-      padding: 22px;
-    }
-
-    .timeline-item h3 {
-      color: #ffffff;
-      margin-bottom: 4px;
-    }
-
     .timeline-meta {
-      color: #38bdf8;
+      color: #b794f4;
       font-size: 0.92rem;
       margin-bottom: 10px;
     }
@@ -241,22 +250,10 @@
       gap: 20px;
     }
 
-    .skill-box {
-      background: #111827;
-      border: 1px solid #334155;
-      border-radius: 18px;
-      padding: 22px;
-    }
-
-    .skill-box h3 {
-      color: #ffffff;
-      margin-bottom: 10px;
-    }
-
     footer {
-      padding: 36px 0;
-      background: #020617;
-      color: #94a3b8;
+      padding: 34px 0;
+      background: #080b10;
+      color: #9ca3af;
       text-align: center;
     }
 
@@ -267,21 +264,18 @@
         grid-template-columns: 1fr;
       }
 
-      header {
-        position: static;
-      }
-
-      nav {
-        align-items: flex-start;
+      .nav-links {
+        gap: 12px;
       }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="container">
       <nav>
-        <div class="brand">Fatema T. Johra</div>
+        <div class="brand">Fatema Johra</div>
         <div class="nav-links">
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
@@ -295,32 +289,29 @@
 
   <main>
     <section class="hero">
-
-      <!-- Cybersecurity Banner -->
-      <<div class="container">
-       <img src="banner.png"
-            alt="Fatema Johra Cybersecurity Banner"
-            width="100%"
-            style="border-radius:20px;margin-bottom:40px;" />
-     </div>
+      <div class="container">
+        <img src="banner.png" alt="Fatema Johra Cybersecurity Banner" class="banner" />
+      </div>
 
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Senior DFIR & Incident Response Portfolio</div>
-          <h1>Federal Cybersecurity, DFIR & Threat Response</h1>
+          <div class="eyebrow">Cybersecurity Portfolio</div>
+          <h1 class="hero-title-small">Federal Cybersecurity, DFIR & Threat Response</h1>
           <p class="subtitle">
-            I’m a cybersecurity professional focused on incident response, digital forensics, and cloud security investigations. My background includes supporting federal cybersecurity operations, investigating security alerts, and building practical workflows for threat detection and response across enterprise environments.
+            I’m a cybersecurity professional focused on incident response, digital forensics, cloud security investigations, and practical threat detection workflows. This portfolio highlights projects and documentation that reflect real-world security operations, investigation methods, and response planning.
           </p>
-          <div style="margin-top:18px;color:#38bdf8;font-weight:700;letter-spacing:0.5px;">U.S. Citizen | Active Clearance | Federal Contractor</div>
+
           <div class="button-row">
             <a class="btn btn-primary" href="https://github.com/ftj258/cybersecurity-portfolio" target="_blank" rel="noopener">View GitHub Portfolio</a>
-            <a class="btn btn-secondary" href="https://www.linkedin.com/in/fjohra/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/fjohra/" target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
 
         <aside class="profile-card">
-          <h2>Core Specializations</h2>
-          <p>Incident response leadership, digital forensics, cloud investigations, SIEM analysis, and federal cybersecurity operations</p>
+          <h2>Core Focus</h2>
+          <p>
+            Practical cybersecurity work across incident response, digital forensics, cloud investigations, SIEM analysis, and federal security operations.
+          </p>
           <div class="badge-list">
             <span class="badge">DFIR</span>
             <span class="badge">Incident Response</span>
@@ -339,20 +330,21 @@
       <div class="container">
         <h2 class="section-title">About</h2>
         <p class="section-intro">
-          I specialize in cybersecurity operations, digital forensics, and incident response across enterprise and federal environments. My work includes investigating security alerts, analyzing cloud and identity activity, supporting containment and remediation, and producing clear documentation for technical and leadership stakeholders
+          My work focuses on investigating security events, understanding attacker behavior, documenting response actions, and improving security workflows. I built this portfolio to show practical examples of incident response planning, forensic thinking, cloud investigation steps, and executive-style documentation.
         </p>
+
         <div class="grid">
           <div class="card">
             <h3>Incident Response</h3>
-            <p>Experience supporting detection, triage, containment, recovery, root cause analysis, and post-incident reporting across enterprise environments</p>
+            <p>Detection, triage, containment, recovery, root cause analysis, lessons learned, and reporting for security incidents.</p>
           </div>
           <div class="card">
             <h3>Cloud Security</h3>
-            <p>Hands-on investigation experience across AWS and Azure, including IAM activity, authentication logs, API events, and anomalous access patterns</p>
+            <p>AWS and Azure investigation workflows focused on IAM activity, authentication logs, API events, and access anomalies.</p>
           </div>
           <div class="card">
-            <h3>Federal Cybersecurity</h3>
-            <p>Federal contractor experience supporting cybersecurity operations, incident response processes, security documentation, and compliance-aligned workflows</p>
+            <h3>Digital Forensics</h3>
+            <p>Evidence handling, endpoint investigation concepts, timeline analysis, documentation, and chain-of-custody practices.</p>
           </div>
         </div>
       </div>
@@ -362,37 +354,41 @@
       <div class="container">
         <h2 class="section-title">Portfolio Projects</h2>
         <p class="section-intro">
-          A collection of projects, workflows, and investigation examples that reflect the type of work I enjoy most — incident response, cloud investigations, digital forensics, and operational security improvements.
+          A collection of projects, workflows, and investigation examples that reflect the type of work I enjoy most: incident response, cloud investigations, digital forensics, and operational security improvements.
         </p>
+
         <div class="grid">
           <div class="card">
-            <h3>Incident Response Portfolio</h3>
-            <p>Structured incident response frameworks, tabletop exercises, SOAR playbooks, metrics dashboards, and post-incident reporting templates</p>
+            <h3>Incident Response Documentation</h3>
+            <p>Reports and templates designed to show how security incidents are summarized, tracked, and communicated.</p>
             <ul>
-              <li>IR lifecycle framework</li>
-              <li>BEC tabletop exercise</li>
-              <li>Phishing containment playbook</li>
+              <li>Credential harvesting incident report</li>
+              <li>Improper usage data spill report</li>
+              <li>Lessons learned documentation</li>
             </ul>
           </div>
+
           <div class="card">
-            <h3>Cloud Security</h3>
-            <p>Cloud investigation workflows and security assessment examples for AWS and Azure environments</p>
+            <h3>Cloud Security Investigations</h3>
+            <p>Investigation workflows for reviewing cloud activity and identifying suspicious access patterns.</p>
             <ul>
-              <li>AWS IR workflow</li>
-              <li>Azure investigation workflow</li>
-              <li>IAM access governance</li>
+              <li>AWS IAM investigation workflow</li>
+              <li>Azure authentication review</li>
+              <li>Cloud access anomaly analysis</li>
             </ul>
           </div>
+
           <div class="card">
-            <h3>Digital Forensics</h3>
-            <p>Evidence handling, chain-of-custody, forensic reporting, endpoint investigation, email analysis, and cloud forensic methodology</p>
+            <h3>Digital Forensics & Evidence Handling</h3>
+            <p>Forensic documentation focused on repeatable investigation steps and evidence integrity.</p>
             <ul>
-              <li>Evidence handling</li>
-              <li>Endpoint investigation</li>
-              <li>Forensic report template</li>
+              <li>Chain-of-custody template</li>
+              <li>Endpoint investigation notes</li>
+              <li>Forensic reporting examples</li>
             </ul>
           </div>
         </div>
+
         <div class="button-row">
           <a class="btn btn-primary" href="https://github.com/ftj258/cybersecurity-portfolio" target="_blank" rel="noopener">Explore Full Repository</a>
         </div>
@@ -402,27 +398,33 @@
     <section id="experience">
       <div class="container">
         <h2 class="section-title">Experience</h2>
-        <p class="section-intro">A concise overview of professional experience relevant to DFIR, incident response, cloud security, and federal cybersecurity operations</p>
+        <p class="section-intro">
+          A concise overview of experience relevant to DFIR, incident response, cloud security, and federal cybersecurity operations.
+        </p>
+
         <div class="timeline">
           <div class="timeline-item">
             <h3>Information Assurance & Network Specialist</h3>
-            <div class="timeline-meta">CODEplus LLC | Federal Contractor | Remote | 09/2020 – 09/2025</div>
+            <div class="timeline-meta">CODEplus LLC | Federal Contractor | Remote</div>
             <p>Supported enterprise incident response investigations, analyzed security alerts using Splunk and Fidelis, investigated AWS and Azure activity, and contributed to playbooks, SOPs, and reporting workflows used during security incidents.</p>
           </div>
+
           <div class="timeline-item">
             <h3>Security Coordinator</h3>
-            <div class="timeline-meta">Business Integra | Hybrid | 07/2019 – 09/2020</div>
+            <div class="timeline-meta">Business Integra | Hybrid</div>
             <p>Worked on cybersecurity investigations involving suspicious authentication activity, identity monitoring, and incident remediation while coordinating with technical teams across the environment.</p>
           </div>
+
           <div class="timeline-item">
             <h3>Graduate Research Assistant</h3>
-            <div class="timeline-meta">George Mason University | 09/2018 – 05/2020</div>
-            <p>Developed digital forensic methodologies, improved evidence correlation, automated forensic workflows, and produced technical research documentation</p>
+            <div class="timeline-meta">George Mason University</div>
+            <p>Developed digital forensic methodologies, improved evidence correlation, automated forensic workflows, and produced technical research documentation.</p>
           </div>
+
           <div class="timeline-item">
             <h3>Digital Forensics Intern</h3>
-            <div class="timeline-meta">DHS Cyber Crime Center | 06/2018 – 09/2018</div>
-            <p>Conducted forensic acquisition and analysis, maintained chain-of-custody, supported endpoint, mobile, macOS, and cloud investigations, and documented forensic procedures</p>
+            <div class="timeline-meta">DHS Cyber Crime Center</div>
+            <p>Conducted forensic acquisition and analysis, maintained chain-of-custody, supported endpoint, mobile, macOS, and cloud investigations, and documented forensic procedures.</p>
           </div>
         </div>
       </div>
@@ -434,18 +436,21 @@
         <div class="skills-wrap">
           <div class="skill-box">
             <h3>Security Operations</h3>
-            <p>Incident Response, Alert Triage, Threat Detection, Root Cause Analysis, IOC Identification, Threat Hunting, Executive Reporting</p>
+            <p>Incident Response, Alert Triage, Threat Detection, Root Cause Analysis, IOC Identification, Threat Hunting, Incident Reporting</p>
           </div>
+
           <div class="skill-box">
             <h3>Platforms & Tools</h3>
-            <p>Splunk, Fidelis, ServiceNow, BMC Remedy, Wireshark, FTK, EnCase, Magnet Axiom, Nuix, Cellebrite, Autopsy</p>
+            <p>Splunk, Fidelis, Wireshark, FTK, EnCase, Magnet Axiom, Cellebrite, Autopsy</p>
           </div>
+
           <div class="skill-box">
             <h3>Cloud & Identity</h3>
             <p>AWS, Azure, Microsoft 365, IAM Analysis, Authentication Monitoring, API Log Review, Access Anomaly Investigation</p>
           </div>
+
           <div class="skill-box">
-            <h3>Frameworks</h3>
+            <h3>Frameworks & Methods</h3>
             <p>NIST RMF, NIST SP 800-53, MITRE ATT&CK, Incident Response Lifecycle, Chain of Custody, Evidence Handling</p>
           </div>
         </div>
@@ -454,22 +459,21 @@
 
     <section id="education">
       <div class="container">
-        <h2 class="section-title">Education & Certifications</h2>
+        <h2 class="section-title">Education</h2>
         <div class="grid">
           <div class="card">
-            <h3>Education</h3>
-            <p>MS, Digital Forensics and Incident Response — George Mason University | 05/2020</p>
-            <p>BS, Applied Information Security — George Mason University | 05/2016</p>
+            <h3>Graduate Education</h3>
+            <p>MS, Digital Forensics and Incident Response | George Mason University</p>
           </div>
+
           <div class="card">
-            <h3>Certifications</h3>
-            <p>Microsoft Azure Security Engineer Associate AZ-500 — In Progress</p>
-            <p>CompTIA CySA+ — Planned</p>
-            <p>AWS Certified Security – Specialty — Planned</p>
+            <h3>Undergraduate Education</h3>
+            <p>BS, Applied Information Security | George Mason University</p>
           </div>
+
           <div class="card">
             <h3>Professional Development</h3>
-            <p>Penetration Testing with Kali Linux (OSCP Training) — Coursework Completed | Offensive Security</p>
+            <p>Continued learning focused on cloud security, incident response, digital forensics, and threat detection.</p>
           </div>
         </div>
       </div>
@@ -481,6 +485,7 @@
         <p class="section-intro">
           I’m always interested in connecting with teams working in DFIR, incident response, cloud security, and cybersecurity operations.
         </p>
+
         <div class="button-row">
           <a class="btn btn-primary" href="mailto:fjohra@hotmail.com">Email Me</a>
           <a class="btn btn-secondary" href="https://www.linkedin.com/in/fjohra/" target="_blank" rel="noopener">LinkedIn</a>
@@ -492,7 +497,7 @@
 
   <footer>
     <div class="container">
-      <p>© 2026 Fatema T. Johra | DFIR • Incident Response • Cloud Security • Federal Cybersecurity</p>
+      <p>© 2026 Fatema Johra | DFIR | Incident Response | Cloud Security</p>
     </div>
   </footer>
 </body>
