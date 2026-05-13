@@ -7,87 +7,6 @@
   <meta name="description" content="Cybersecurity portfolio for Fatema Johra focused on incident response, digital forensics, cloud security, threat detection, federal documentation, NIST frameworks, and CISA-aligned playbooks." />
 
   <style>
-    .section {
-  padding: 56px 20px;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 12px;
-}
-
-.section-intro {
-  max-width: 780px;
-  line-height: 1.6;
-  margin-bottom: 28px;
-  color: #cbd5e1;
-}
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.portfolio-card {
-  background: rgba(15, 23, 42, 0.78);
-  border: 1px solid rgba(148, 163, 184, 0.22);
-  border-radius: 18px;
-  padding: 24px;
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.28);
-}
-
-.portfolio-card.featured {
-  border-color: rgba(129, 140, 248, 0.45);
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.92), rgba(30, 64, 175, 0.35));
-}
-
-.portfolio-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 12px;
-}
-
-.portfolio-card p {
-  line-height: 1.6;
-  color: #dbeafe;
-  margin-bottom: 16px;
-}
-
-.portfolio-card ul {
-  margin: 0 0 20px 18px;
-  padding: 0;
-  color: #cbd5e1;
-  line-height: 1.7;
-}
-
-.btn {
-  display: inline-block;
-  padding: 10px 16px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 600;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  color: #e0f2fe;
-  background: rgba(15, 23, 42, 0.75);
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  border-color: transparent;
-  color: #ffffff;
-}
-
-@media (max-width: 800px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-  }
-}
-    
     * {
       box-sizing: border-box;
       margin: 0;
@@ -96,13 +15,13 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #0b0f14;
+      background: #111114;
       color: #e5e7eb;
       line-height: 1.6;
     }
 
     a {
-      color: #b794f4;
+      color: #c4a7e7;
       text-decoration: none;
     }
 
@@ -118,8 +37,8 @@
 
     header {
       padding: 24px 0;
-      background: #080b10;
-      border-bottom: 1px solid #1f2937;
+      background: #0f1013;
+      border-bottom: 1px solid #2f3138;
     }
 
     nav {
@@ -146,7 +65,7 @@
 
     .hero {
       padding: 46px 0 70px;
-      background: linear-gradient(135deg, #0b0f14 0%, #111827 60%, #1f1b2e 100%);
+      background: linear-gradient(135deg, #111114 0%, #1a1b20 55%, #2a2230 100%);
     }
 
     .banner {
@@ -165,7 +84,7 @@
     }
 
     .eyebrow {
-      color: #b794f4;
+      color: #c4a7e7;
       font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
@@ -183,7 +102,7 @@
 
     .hero-title-small {
       color: #ffffff;
-      font-size: clamp(1.65rem, 4vw, 2.35rem);
+      font-size: clamp(1.55rem, 3.5vw, 2.15rem);
       line-height: 1.18;
       margin-bottom: 16px;
       letter-spacing: -0.5px;
@@ -208,17 +127,16 @@
       padding: 11px 17px;
       border-radius: 999px;
       font-weight: 700;
-      border: 1px solid #b794f4;
+      border: 1px solid #c4a7e7;
+      color: #e5e7eb;
+      background: rgba(27, 28, 33, 0.75);
       transition: 0.2s ease;
     }
 
     .btn-primary {
-      background: #b794f4;
-      color: #0b0f14;
-    }
-
-    .btn-secondary {
-      color: #e5e7eb;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #ffffff;
+      border-color: transparent;
     }
 
     .btn:hover {
@@ -227,8 +145,8 @@
     }
 
     .profile-card {
-      background: rgba(17, 24, 39, 0.88);
-      border: 1px solid #374151;
+      background: rgba(27, 28, 33, 0.88);
+      border: 1px solid #2f3138;
       border-radius: 20px;
       padding: 24px;
       box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
@@ -254,15 +172,15 @@
     .badge {
       padding: 7px 10px;
       border-radius: 999px;
-      border: 1px solid #374151;
-      background: #0f172a;
+      border: 1px solid #2f3138;
+      background: #16171b;
       color: #d1d5db;
       font-size: 0.85rem;
     }
 
     section {
       padding: 66px 0;
-      border-bottom: 1px solid #1f2937;
+      border-bottom: 1px solid #2f3138;
     }
 
     .section-title {
@@ -277,24 +195,36 @@
       margin-bottom: 30px;
     }
 
-    .grid {
+    .grid,
+    .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
+    .portfolio-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .card,
     .timeline-item,
-    .skill-box {
-      background: #111827;
-      border: 1px solid #374151;
+    .skill-box,
+    .portfolio-card {
+      background: #1b1c21;
+      border: 1px solid #2f3138;
       border-radius: 18px;
       padding: 22px;
     }
 
+    .portfolio-card.featured {
+      border-color: rgba(196, 167, 231, 0.45);
+      background: linear-gradient(135deg, rgba(27, 28, 33, 0.96), rgba(58, 43, 76, 0.62));
+    }
+
     .card h3,
     .timeline-item h3,
-    .skill-box h3 {
+    .skill-box h3,
+    .portfolio-card h3 {
       color: #ffffff;
       margin-bottom: 10px;
       font-size: 1.08rem;
@@ -302,12 +232,14 @@
 
     .card p,
     .timeline-item p,
-    .skill-box p {
+    .skill-box p,
+    .portfolio-card p {
       color: #d1d5db;
       font-size: 0.95rem;
     }
 
-    .card ul {
+    .card ul,
+    .portfolio-card ul {
       margin-top: 12px;
       padding-left: 18px;
       color: #d1d5db;
@@ -320,7 +252,7 @@
     }
 
     .timeline-meta {
-      color: #b794f4;
+      color: #c4a7e7;
       font-size: 0.92rem;
       margin-bottom: 10px;
     }
@@ -333,7 +265,7 @@
 
     footer {
       padding: 34px 0;
-      background: #080b10;
+      background: #0f1013;
       color: #9ca3af;
       text-align: center;
     }
@@ -341,6 +273,7 @@
     @media (max-width: 850px) {
       .hero-grid,
       .grid,
+      .portfolio-grid,
       .skills-wrap {
         grid-template-columns: 1fr;
       }
@@ -359,6 +292,7 @@
         <div class="brand">Fatema Johra</div>
         <div class="nav-links">
           <a href="#about">About</a>
+          <a href="#featured-portfolios">Portfolios</a>
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
           <a href="#skills">Skills</a>
@@ -383,8 +317,9 @@
           </p>
 
           <div class="button-row">
-            <a class="btn btn-primary" href="https://github.com/ftj258/cybersecurity-portfolio" target="_blank" rel="noopener">View GitHub Portfolio</a>
-            <a class="btn btn-secondary" href="https://www.linkedin.com/in/fjohra/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn-primary" href="https://github.com/ftj258/incident-response-portfolio" target="_blank" rel="noopener">Incident Response Portfolio</a>
+            <a class="btn" href="https://github.com/ftj258/cybersecurity-portfolio" target="_blank" rel="noopener">Cybersecurity Portfolio</a>
+            <a class="btn" href="https://www.linkedin.com/in/fjohra/" target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
 
@@ -433,11 +368,54 @@
       </div>
     </section>
 
+    <section id="featured-portfolios">
+      <div class="container">
+        <h2 class="section-title">Featured Portfolios</h2>
+        <p class="section-intro">
+          Two portfolio repositories are highlighted here: the main cybersecurity portfolio and a dedicated incident response portfolio for deeper DFIR and CSIRT documentation.
+        </p>
+
+        <div class="portfolio-grid">
+          <div class="portfolio-card featured">
+            <h3>Incident Response Portfolio</h3>
+            <p>
+              A dedicated DFIR and incident response repository focused on playbooks, CSIRT documentation, tabletop exercises, executive reporting, operational workflows, and incident reports.
+            </p>
+            <ul>
+              <li>CSIRT standard operating procedure</li>
+              <li>Incident response playbooks</li>
+              <li>Tabletop exercises</li>
+              <li>Incident reports and executive reporting</li>
+            </ul>
+            <div class="button-row">
+              <a class="btn btn-primary" href="https://github.com/ftj258/incident-response-portfolio" target="_blank" rel="noopener">View Incident Response Portfolio</a>
+            </div>
+          </div>
+
+          <div class="portfolio-card">
+            <h3>Cybersecurity Portfolio</h3>
+            <p>
+              The main technical portfolio hub containing cybersecurity documentation, cloud security workflows, digital forensics materials, resume resources, and selected project work.
+            </p>
+            <ul>
+              <li>Cloud security investigation workflows</li>
+              <li>Digital forensics documentation</li>
+              <li>Cybersecurity project examples</li>
+              <li>Federal cybersecurity portfolio materials</li>
+            </ul>
+            <div class="button-row">
+              <a class="btn" href="https://github.com/ftj258/cybersecurity-portfolio" target="_blank" rel="noopener">View Cybersecurity Portfolio</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="projects">
       <div class="container">
-        <h2 class="section-title">Portfolio Projects</h2>
+        <h2 class="section-title">Project Areas</h2>
         <p class="section-intro">
-          A collection of projects, workflows, and investigation examples that reflect the type of work I enjoy most: incident response, cloud investigations, digital forensics, federal-style documentation, and operational security improvements.
+          A collection of projects, workflows, and investigation examples focused on incident response, cloud investigations, digital forensics, federal-style documentation, and operational security improvements.
         </p>
 
         <div class="grid">
@@ -470,10 +448,6 @@
               <li>Executive incident reporting examples</li>
             </ul>
           </div>
-        </div>
-
-        <div class="button-row">
-          <a class="btn btn-primary" href="https://github.com/ftj258/cybersecurity-portfolio" target="_blank" rel="noopener">Explore Full Repository</a>
         </div>
       </div>
     </section>
@@ -571,8 +545,8 @@
 
         <div class="button-row">
           <a class="btn btn-primary" href="mailto:fjohra@hotmail.com">Email Me</a>
-          <a class="btn btn-secondary" href="https://www.linkedin.com/in/fjohra/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn btn-secondary" href="https://github.com/ftj258" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/fjohra/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/ftj258" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </section>
