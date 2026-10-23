@@ -158,6 +158,11 @@
   }
   .project h3{ font-size: 15px; margin: 0 0 3px; font-weight: 600; }
   .project p{ margin: 0; font-size: 13.5px; color: var(--ink-soft); }
+  .project-link{
+    display: inline-block; margin-top: 6px; font-family: var(--mono); font-size: 12px;
+    color: var(--accent-text); text-decoration: none; border-bottom: 1px solid transparent;
+  }
+  .project-link:hover{ border-bottom-color: var(--accent-text); }
 
   /* ---------- Education / certs ---------- */
   .edu-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -220,7 +225,7 @@
     <h1>Fatema T. Johra</h1>
     <div class="name-rule"></div>
     <div class="role-line">Federal Cybersecurity · Incident Response · Cyber Defense · Digital Forensics (DFIR)</div>
-    <p class="lede">I work in incident response, digital forensics, and cloud security investigations for federal systems. I build playbooks, document response processes, and align my work with NIST and CISA guidance.</p>
+    <p class="lede">I investigate security incidents and digital evidence for federal systems &mdash; triaging alerts, writing the playbooks and SOPs my team runs on, and documenting it precisely enough that someone else could pick it up cold.</p>
     <div class="meta-row">
       <span>U.S. Citizen</span>
       <span>Federal Contractor</span>
@@ -247,8 +252,6 @@
     <p class="eyebrow">About</p>
     <h2>Why digital forensics</h2>
     <p>I've always loved mysteries &mdash; the kind where you follow evidence backward until the full picture makes sense. Crime scene investigation and forensic cases fascinated me, but the physical side never suited me &mdash; I'm not someone who can deal with an autopsy or blood. So I found the version of that work I could actually do: digital forensics. The crime scene is a laptop or a phone instead of a physical location, the evidence is login activity and data instead of fingerprints, and what I'm looking for is how an attacker got in rather than how someone got into a room.</p>
-    <p>This site shows real examples of my incident response work, forensic investigations, cloud work, and documentation.</p>
-
     <div class="card-grid">
       <div class="card">
         <div class="card-title">Incident Response</div>
@@ -328,6 +331,7 @@
       <div>
         <h3>Incident Response Portfolio</h3>
         <p>Playbooks, CSIRT procedures, executive reports, and tabletop exercises built on NIST and CISA guidance.</p>
+        <a class="project-link" href="https://github.com/ftj258/cybersecurity-portfolio/tree/main/incident-response" target="_blank" rel="noopener">View on GitHub &rarr;</a>
       </div>
     </div>
     <div class="project">
@@ -341,7 +345,8 @@
       <span class="dot"></span>
       <div>
         <h3>Digital Forensics Investigation Lab</h3>
-        <p>Forensic analysis, evidence handling, and reporting documentation.</p>
+        <p>Memory forensics lab: recovering attacker artifacts from a Windows memory image using Volatility.</p>
+        <a class="project-link" href="https://github.com/ftj258/dfir-home-labs/tree/main/01-memory-forensics" target="_blank" rel="noopener">View on GitHub &rarr;</a>
       </div>
     </div>
   </section>
