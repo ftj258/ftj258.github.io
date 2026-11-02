@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turnabout Memories — Turnabout Forensics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span><a href="../index.html" style="color:inherit;text-decoration:none;">F. JOHRA / DFIR</a></span>
+    <nav>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../labs.html">Labs</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../blog/" aria-current="page" style="color:var(--accent-text);">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <article class="post" style="padding-top:36px;">
+    <p class="eyebrow"><a href="./" style="color:inherit;text-decoration:none;">Turnabout Forensics</a> &middot; Case 1</p>
+    <h1>Turnabout Memories</h1>
+    <div class="post-meta">November 2026 &middot; Memory forensics &middot; MemLabs Lab 1</div>
+
+    <p>With 17 cups of coffee and a whip in my hand, I thought I was ready to tackle my first case: Turnabout Memories, with memory forensics.</p>
+    <p>The case comes from <a href="https://github.com/stuxnet999/MemLabs/tree/master/Lab%201" target="_blank" rel="noopener">MemLabs Lab 1</a>, and it opens with the line: "My sister's computer crashed." A crash and two sisters? My mind went straight to the Miney sisters in <em>Recipe for Turnabout</em>. If you've played it, you know you can't take anything at face value. Memory forensics works the same way. A memory dump doesn't care what anyone says happened. It shows what was actually running when the computer went down.</p>
+    <p>I thought I was ready, but I didn't realize the Rookie Killer, Winston Payne, had already cursed me. My first obstacle: Volatility itself.</p>
+
+    <h2>Payne's Curse</h2>
+    <p>It turned out my Court Record needed a cleanup. I had Volatility 3 installed, and it has a limitation: a couple of the plugins I needed don't support this Windows 7 build. Instead of evidence, I got this:</p>
+    <pre><code>NotImplementedError: This version of Windows is not supported: 6.1 15.7601</code></pre>
+    <figure>
+      <img src="images/turnabout-memories-vol3-error.png" alt="Volatility 3 error saying this Windows version is not supported">
+      <figcaption>Payne's curse, in error-message form.</figcaption>
+    </figure>
+    <p>So I downloaded Volatility 2.6 and tried again.</p>
+
+    <h2>Psyche-Lock 1: Gibberish in the Terminal</h2>
+    <p>Once 2.6 was running, I finally got something: a command someone had typed, and what it printed back. Except, what it printed looked like gibberish. <strong>Hold it!</strong> Gibberish doesn't end up in a terminal by accident. It was encoded. One quick decode in PowerShell later, the first Psyche-Lock shattered, and Flag 1 was mine.</p>
+    <p class="aside"><em>Rookie tip: when something looks like nonsense, ask yourself if it's hiding in plain sight.</em></p>
+
+    <h2>Psyche-Lock 2: The Unfinished Drawing</h2>
+    <p>I went after Paint next. The case description says the sister was drawing when the computer crashed, so whatever she drew had to still be in memory somewhere.</p>
+    <figure>
+      <img src="images/turnabout-memories-pslist.png" alt="Volatility process list from the memory image">
+      <figcaption>What was running when the computer went down.</figcaption>
+    </figure>
+    <p>I dumped the Paint process, renamed the file so GIMP would open it as raw image data, and started guessing widths and offsets. I was a total rookie with GIMP, so this turned into a lot of trial and error. It took me way too long to catch that <strong>GIMP's offset is in pixels, not bytes.</strong> Each pixel is 4 bytes, so my offsets were off by a factor of 4 the whole time.</p>
+    <figure>
+      <img src="images/turnabout-memories-paint-attempt.png" alt="Raw Paint memory opened as an image: a repeating icon and a blank white canvas">
+      <figcaption>So close, yet so far: a repeating icon and a blank canvas.</figcaption>
+    </figure>
+    <p>Once I caught that, things started showing up: a small icon repeating across the image, and a big white area that looked like the blank canvas. But no matter what I tried, I couldn't line up the drawing. This Psyche-Lock was not breaking today.</p>
+    <p class="aside"><em>Maybe I'll ask Maya to channel Mia and come back to it later!</em></p>
+
+    <h2>Psyche-Lock 3: Three Times Isn't a Coincidence</h2>
+    <p>When a computer crashes, the first question is always: what was happening right before it? So I went through the users. One of them had a file with a name that basically begged to be opened. I dug a little deeper and found it showing up in three different places in memory. If something shows up three times, it's not a coincidence.</p>
+    <p>Getting it out took a few tries. First, Windows couldn't display a special character in one of the file names, so I had to force Python to use UTF-8. Then I went back to the Wright &amp; Co. Law Offices for a break. When I came back, I found that <code>--virtaddr</code> didn't work, but <code>--physaddr</code> did, and the file finally came out of memory.</p>
+    <p>The archive was password protected, of course. A little bit of sleuthing later, I realized the password didn't have to be guessed. It was already sitting in memory, in a place attackers love to look. I just had to think like one. The second Psyche-Lock shattered, and inside was a picture with my third flag.</p>
+
+    <h2>The Lock I Haven't Broken Yet</h2>
+    <p>Flag 2 is still out there, hiding somewhere in that Paint memory. If you crack it before I do, tag me on <a href="https://linkedin.com/in/fjohra" target="_blank" rel="noopener">LinkedIn</a> and show me how. I'll happily admit defeat... and then try it myself.</p>
+
+    <h2>Verdict</h2>
+    <p>Every case gives me experience, and slowly I go from rookie to ace. If this post encouraged a cybersecurity professional or an Ace Attorney fan who's been thinking about joining the DFIR community, that's my win. If it was as fun to read as it was to write, that's my bonus. Our work doesn't have to be boring. We can enjoy it our own way. The Ace Attorney way!</p>
+    <p>Seventeen cups down. Time to brew the eighteenth.</p>
+
+    <div class="spoiler">Stuck? &#9888;&#65039; Spoilers ahead: <a href="https://github.com/ftj258/dfir-home-labs/tree/main/01-memory-forensics/turnabout-memories" target="_blank" rel="noopener">the full case report</a>, with every command I ran.</div>
+  </article>
+
+  <footer>
+    <div class="footer-stamp">
+      <span>F. JOHRA / DFIR</span>
+      <a href="./">All posts</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

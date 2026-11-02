@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turnabout Forensics — Fatema T. Johra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span><a href="../index.html" style="color:inherit;text-decoration:none;">F. JOHRA / DFIR</a></span>
+    <nav>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../labs.html">Labs</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../blog/" aria-current="page" style="color:var(--accent-text);">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <section style="padding-top:36px;">
+    <p class="eyebrow">Blog</p>
+    <h2>Turnabout Forensics</h2>
+    <p>Digital forensics cases, told the way they feel to me: like Ace Attorney cases. Fun for fans, hints for beginners, and no spoilers unless you ask for them.</p>
+    <p style="font-size:13px;color:var(--ink-soft);">Ace Attorney is a Capcom series. This blog is a fan's nod to it and isn't affiliated with Capcom.</p>
+    <div id="post-list"></div>
+  </section>
+
+  <footer>
+    <div class="footer-stamp">
+      <span>F. JOHRA / DFIR</span>
+      <a href="../index.html">Back to home</a>
+    </div>
+  </footer>
+</div>
+
+<script src="../cases.js"></script>
+<script>
+  var list=document.getElementById('post-list');
+  window.CASES.filter(function(c){ return c.post; }).sort(function(a,b){ return b.number-a.number; }).forEach(function(c){
+    var a=document.createElement('a'); a.className='post-card'; a.href=c.post.page;
+    [['post-date',c.post.date+' · Case '+c.number],['post-title',c.title],['post-teaser',c.post.teaser]].forEach(function(p){
+      var d=document.createElement('div'); d.className=p[0]; d.textContent=p[1]; a.appendChild(d);
+    });
+    list.appendChild(a);
+  });
+</script>
+</body>
+</html>
