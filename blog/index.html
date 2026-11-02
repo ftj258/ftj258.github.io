@@ -45,12 +45,15 @@
 <script src="../cases.js"></script>
 <script>
   var list=document.getElementById('post-list');
+  function el(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text) e.textContent=text; return e; }
   window.CASES.filter(function(c){ return c.post; }).sort(function(a,b){ return b.number-a.number; }).forEach(function(c){
-    var a=document.createElement('a'); a.className='post-card'; a.href=c.post.page;
-    [['post-date',c.post.date+' · Case '+c.number],['post-title',c.title],['post-teaser',c.post.teaser]].forEach(function(p){
-      var d=document.createElement('div'); d.className=p[0]; d.textContent=p[1]; a.appendChild(d);
-    });
-    list.appendChild(a);
+    var item=el('div','project'), inner=el('div');
+    item.appendChild(el('span','dot'));
+    var h=el('h3'), a=el('a',null,c.title); a.href=c.post.page; a.style.color='inherit'; h.appendChild(a);
+    inner.appendChild(h);
+    inner.appendChild(el('p',null,c.post.teaser));
+    inner.appendChild(el('p','post-date',c.post.date+' · Case '+c.number));
+    item.appendChild(inner); list.appendChild(item);
   });
 </script>
 </body>
