@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DFIR Home Labs — Fatema T. Johra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span><a href="index.html" style="color:inherit;text-decoration:none;">F. JOHRA / DFIR</a></span>
+    <nav>
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="labs.html" aria-current="page" style="color:var(--accent-text);">Labs</a>
+      <a href="index.html#education">Education</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section style="padding-top:36px;">
+    <p class="eyebrow">Case Files</p>
+    <h2>DFIR Home Labs</h2>
+    <p>Cases I worked on my own with public datasets and free tools. Each one links to the full report on GitHub.</p>
+
+    <div class="case">
+      <div class="case-head">
+        <span class="case-id">CASE 1 &middot; MEMORY FORENSICS</span>
+        <span class="status closed">Closed</span>
+      </div>
+      <div class="case-body">
+        <p class="case-role">Turnabout Memories</p>
+        <p class="case-org">MemLabs Lab 1 &middot; Windows 7 memory image &middot; Volatility 3, Volatility 2.6</p>
+        <ul>
+          <li>A computer crashed while its owner was working. I went through the memory dump to see what was running and recovered 2 of 3 hidden flags.</li>
+        </ul>
+        <a class="project-link" href="https://github.com/ftj258/dfir-home-labs/tree/main/01-memory-forensics/turnabout-memories" target="_blank" rel="noopener">Read the case report &rarr;</a>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-head">
+        <span class="case-id">CASE 2 &middot; DISK FORENSICS</span>
+        <span class="status closed">Closed</span>
+      </div>
+      <div class="case-body">
+        <p class="case-role">Turnabout Spreadsheet</p>
+        <p class="case-org">M57-Jean &middot; Windows XP disk image &middot; Autopsy</p>
+        <ul>
+          <li>A spreadsheet with employee names, SSNs and salaries ended up online. I traced it back to a spoofed email posing as the boss.</li>
+        </ul>
+        <a class="project-link" href="https://github.com/ftj258/dfir-home-labs/tree/main/02-disk-timeline-analysis/turnabout-spreadsheet" target="_blank" rel="noopener">Read the case report &rarr;</a>
+      </div>
+    </div>
+
+    <p style="margin-top:18px;"><a class="project-link" href="https://github.com/ftj258/dfir-home-labs" target="_blank" rel="noopener">All labs on GitHub &rarr;</a></p>
+  </section>
+
+  <footer>
+    <div class="footer-stamp">
+      <span>F. JOHRA / DFIR</span>
+      <a href="index.html">Back to home</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
