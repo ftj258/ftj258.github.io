@@ -6,201 +6,7 @@
 <title>Fatema T. Johra — Incident Response &amp; Digital Forensics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #121315;
-    --paper: #1b1c1f;
-    --ink: #D6DADF;
-    --ink-soft: #A9B4C4;
-    --navy: #D6DADF;
-    --navy-soft: #C6D0DE;
-    --line: rgba(255,255,255,0.10);
-    --line-strong: rgba(255,255,255,0.20);
-    --accent: #191970;
-    --accent-text: #5FC2B8;
-    --accent-soft: rgba(25,25,112,0.24);
-    --active: #7FB89E;
-    --active-soft: rgba(127,184,158,0.14);
-    --closed: #A39C8E;
-    --closed-soft: rgba(163,156,142,0.14);
-    --serif: 'Source Serif 4', Georgia, serif;
-    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
-    --mono: 'IBM Plex Mono', 'Courier New', monospace;
-  }
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body{
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--sans);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  a { color: var(--accent-text); }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-  .wrap{ max-width: 760px; margin: 0 auto; padding: 0 28px; }
-
-  /* ---------- Top bar ---------- */
-  .topbar{
-    border-bottom: 1px solid var(--line);
-    background: var(--paper);
-    position: sticky; top: 0; z-index: 20;
-  }
-  .topbar-inner{
-    max-width: 760px; margin: 0 auto; padding: 14px 28px;
-    display: flex; justify-content: space-between; align-items: center;
-    font-family: var(--mono); font-size: 12.5px; letter-spacing: .03em;
-    color: var(--ink-soft);
-  }
-  .topbar-inner nav{ display: flex; gap: 20px; }
-  .topbar-inner nav a{ color: var(--ink-soft); text-decoration: none; }
-  .topbar-inner nav a:hover{ color: var(--accent-text); text-decoration: underline; }
-
-  /* ---------- Hero ---------- */
-  .hero{ padding: 36px 0 24px; }
-  .banner-img{
-    width: 100%; max-width: 100%; height: auto; display: block;
-    border-radius: 4px; margin-bottom: 16px; border: 1px solid var(--line);
-  }
-  .hero .stamp{
-    display: inline-block; font-family: var(--mono); font-size: 11.5px;
-    letter-spacing: .08em; color: var(--accent-text); border: 1px solid var(--accent);
-    padding: 3px 9px; border-radius: 2px; margin-bottom: 14px; text-transform: uppercase;
-  }
-  .hero h1{
-    font-family: var(--serif); font-weight: 600; font-size: clamp(2.1rem, 5vw, 2.9rem);
-    line-height: 1.12; margin: 0 0 12px; color: var(--navy);
-  }
-  .name-rule{ width: 90px; height: 2px; background: var(--accent); margin-bottom: 16px; }
-  .hero .role-line{
-    font-family: var(--mono); font-size: 13.5px; color: var(--accent-text);
-    letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px;
-  }
-  .hero p.lede{
-    font-size: 1.08rem; max-width: 58ch; color: var(--ink); margin: 0 0 14px;
-  }
-  .meta-row{
-    display: flex; flex-wrap: wrap; gap: 8px 10px; font-family: var(--mono); font-size: 12px;
-    color: var(--ink-soft); margin-bottom: 16px;
-  }
-  .meta-row span{
-    border: 1px solid var(--line-strong); padding: 3px 8px; border-radius: 2px; background: var(--paper);
-  }
-  .contact-row{ display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 14.5px; }
-  .contact-row a{ text-decoration: none; border-bottom: 1px solid var(--line-strong); }
-  .contact-row a:hover{ border-color: var(--accent); }
-
-  /* ---------- Section scaffolding ---------- */
-  section{ padding: 12px 0; }
-  section:first-of-type{ border-top: none; }
-  .eyebrow{
-    font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--accent-text); margin: 0 0 8px;
-  }
-  h2{
-    font-family: var(--serif); font-weight: 600; font-size: 1.5rem; color: var(--accent-text);
-    margin: 0 0 12px;
-  }
-
-  /* ---------- Focus tags ---------- */
-  .tag-row{ display: flex; flex-wrap: wrap; gap: 9px; }
-  .tag{
-    font-family: var(--mono); font-size: 12.5px; color: var(--navy);
-    background: var(--paper); border: 1px solid var(--line-strong);
-    padding: 5px 11px; border-radius: 2px;
-  }
-
-  /* ---------- About cards ---------- */
-  .card-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
-  .card{
-    background: var(--paper); border: 1px solid var(--line); border-radius: 3px;
-    padding: 13px 14px 15px;
-  }
-  .card .card-title{ font-weight: 600; font-size: 14.5px; color: var(--navy); margin-bottom: 5px; }
-  .card p{ font-size: 13.5px; color: var(--ink-soft); margin: 0; }
-
-  /* ---------- Case files (experience) ---------- */
-  .case{
-    background: var(--paper); border: 1px solid var(--line); border-radius: 3px;
-    margin-bottom: 12px; overflow: hidden;
-  }
-  .case-head{
-    display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 8px;
-    padding: 10px 16px; border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.03);
-  }
-  .case-id{ font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
-  .status{
-    font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
-    padding: 3px 9px; border-radius: 2px;
-  }
-  .status.active{ background: var(--active-soft); color: var(--active); }
-  .status.closed{ background: var(--closed-soft); color: var(--closed); }
-  .case-body{ padding: 14px 16px 16px; }
-  .case-role{ font-weight: 600; font-size: 16px; margin: 0 0 2px; }
-  .case-org{ font-size: 13.5px; color: var(--ink-soft); margin: 0 0 9px; }
-  .case-body ul{ margin: 0; padding-left: 18px; }
-  .case-body li{ font-size: 14px; margin-bottom: 5px; color: var(--ink); }
-  .case-body li:last-child{ margin-bottom: 0; }
-
-  /* ---------- Projects ---------- */
-  .project{
-    display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line);
-  }
-  .project:last-child{ border-bottom: none; }
-  .project .dot{
-    flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
-    margin-top: 8px;
-  }
-  .project h3{ font-size: 15px; margin: 0 0 3px; font-weight: 600; }
-  .project p{ margin: 0; font-size: 13.5px; color: var(--ink-soft); }
-  .project-link{
-    display: inline-block; margin-top: 6px; font-family: var(--mono); font-size: 12px;
-    color: var(--accent-text); text-decoration: none; border-bottom: 1px solid transparent;
-  }
-  .project-link:hover{ border-bottom-color: var(--accent-text); }
-
-  /* ---------- Education / certs ---------- */
-  .edu-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .edu-grid h3{ font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); margin: 0 0 8px; font-family: var(--mono); font-weight: 500;}
-  .edu-item{ margin-bottom: 9px; font-size: 14px; }
-  .edu-item .deg{ font-weight: 600; }
-  .edu-item .where{ color: var(--ink-soft); font-size: 13px; }
-  .pill-status{
-    font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em;
-    color: var(--accent-text); border: 1px solid var(--accent); border-radius: 2px; padding: 1px 6px;
-    margin-left: 6px; vertical-align: 1px;
-  }
-
-  /* ---------- Contact / footer ---------- */
-  footer{ padding: 24px 0 36px; }
-  footer p{ font-size: 15px; max-width: 52ch; }
-  .footer-stamp{
-    margin-top: 18px; padding-top: 12px; border-top: 1px dashed var(--line-strong);
-    font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft);
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
-  }
-
-  /* ---------- Reveal on scroll ---------- */
-  .reveal{ opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
-  .reveal.in{ opacity: 1; transform: translateY(0); }
-  @media (prefers-reduced-motion: reduce){
-    .reveal{ opacity: 1; transform: none; transition: none; }
-    html{ scroll-behavior: auto; }
-  }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 640px){
-    .card-grid{ grid-template-columns: 1fr; }
-    .edu-grid{ grid-template-columns: 1fr; }
-    .topbar-inner nav{ gap: 12px; }
-    .topbar-inner nav a:nth-child(4), .topbar-inner nav a:nth-child(5){ display:none; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -211,6 +17,7 @@
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
+      <a href="#labs">Labs</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -340,12 +147,40 @@
         <p>A standard workflow for phishing triage, containment, remediation, and reporting.</p>
       </div>
     </div>
-    <div class="project">
-      <span class="dot"></span>
-      <div>
-        <h3>DFIR Home Labs</h3>
-        <p>Forensics cases I worked from evidence to report: a memory investigation with Volatility and a data leak investigation in Autopsy.</p>
-        <a class="project-link" href="https://github.com/ftj258/dfir-home-labs" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+  </section>
+
+  <section id="labs" class="reveal">
+    <p class="eyebrow">Case Files</p>
+    <h2>DFIR Home Labs</h2>
+    <p>Cases I worked on my own with public datasets and free tools. Each one links to the full report on GitHub.</p>
+
+    <div class="case">
+      <div class="case-head">
+        <span class="case-id">CASE 1 &middot; MEMORY FORENSICS</span>
+        <span class="status closed">Closed</span>
+      </div>
+      <div class="case-body">
+        <p class="case-role">Turnabout Memories</p>
+        <p class="case-org">MemLabs Lab 1 &middot; Windows 7 memory image &middot; Volatility 3, Volatility 2.6</p>
+        <ul>
+          <li>A computer crashed while its owner was working. I went through the memory dump to see what was running and recovered 2 of 3 hidden flags.</li>
+        </ul>
+        <a class="project-link" href="https://github.com/ftj258/dfir-home-labs/tree/main/01-memory-forensics/turnabout-memories" target="_blank" rel="noopener">Read the case report &rarr;</a>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-head">
+        <span class="case-id">CASE 2 &middot; DISK FORENSICS</span>
+        <span class="status closed">Closed</span>
+      </div>
+      <div class="case-body">
+        <p class="case-role">Turnabout Spreadsheet</p>
+        <p class="case-org">M57-Jean &middot; Windows XP disk image &middot; Autopsy</p>
+        <ul>
+          <li>A spreadsheet with employee names, SSNs and salaries ended up online. I traced it back to a spoofed email posing as the boss.</li>
+        </ul>
+        <a class="project-link" href="https://github.com/ftj258/dfir-home-labs/tree/main/02-disk-timeline-analysis/turnabout-spreadsheet" target="_blank" rel="noopener">Read the case report &rarr;</a>
       </div>
     </div>
   </section>
