@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turnabout Spreadsheet - Turnabout Forensics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span><a href="../index.html" style="color:inherit;text-decoration:none;">F. JOHRA / DFIR</a></span>
+    <nav>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../labs.html">Labs</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../blog/" aria-current="page" style="color:var(--accent-text);">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <article class="post" style="padding-top:36px;">
+    <p class="eyebrow"><a href="./" style="color:inherit;text-decoration:none;">Turnabout Forensics</a> &middot; Case 2</p>
+    <h1>Turnabout Spreadsheet</h1>
+    <div class="post-meta">November 2026 &middot; Disk forensics &middot; M57-Jean</div>
+
+    <p>When I first read the case scenario, I couldn't stop wondering: was Jean a Dahlia Hawthorne, all sweet smiles hiding something? Or was she innocent? There was only one way to find out. As Miles Edgeworth would say, in court, evidence is everything. So with no time to lose, I opened the case.</p>
+    <p>The case comes from the <a href="https://digitalcorpora.org/corpora/scenarios/m57-jean/" target="_blank" rel="noopener">M57-Jean scenario</a> on Digital Corpora. I hashed the evidence first, for two reasons. One, to confirm I was starting on a clean, untouched copy. Two, so that when I finished, I could prove I hadn't changed a thing. I kept a read-only original on my D: drive and only ever worked from a copy on C:.</p>
+    <figure>
+      <img src="images/turnabout-spreadsheet-original-verified.png" alt="Hash check of the read-only original evidence copy">
+      <figcaption>Evidence first. Always.</figcaption>
+    </figure>
+
+    <h2>Court Record Cleanup, Again</h2>
+    <p>First, my Court Record needed updating again. This time it was Autopsy. My old 4.14 version kept crashing on launch with this:</p>
+    <pre><code>libtsk_jni ... Can't find dependent libraries</code></pre>
+    <p>So I removed it completely and installed the newer 4.22.1. Every obstacle teaches me two things: patience, and something new. With the new version running, I loaded the image into Autopsy and started investigating.</p>
+
+    <h2>Objection! The Laptop That Wasn't</h2>
+    <p>The case called it a laptop. But a little bit of sleuthing, and something didn't add up. <strong>Objection!</strong> VMware Tools went in just 7 minutes after Windows, the CD drive was a VMware one, and the network card's address started with VMware's prefix. This "laptop" was actually a virtual machine. It piqued my interest, and I wanted to dig deeper to see what else I could find.</p>
+
+    <h2>Calling Wendy Oldbag to the Stand</h2>
+    <p>Next, I needed the user's time zone. Without it, I couldn't put the events in the right order, and in a case like this, the order is everything. So I called in our good old witness, Wendy Oldbag - the registry. Just like her, it remembers everything, and you only have to ask the right question.</p>
+    <figure>
+      <img src="images/turnabout-spreadsheet-time-zone.png" alt="Time zone settings from the registry">
+      <figcaption>The witness takes the stand.</figcaption>
+    </figure>
+
+    <p>While I was working out the time zone, I noticed something odd: in some places, Autopsy was showing times 4 hours off from what the registry said. I saw it in Last Login, Shell Bags, Installed Programs and the Excel metadata. I'm not sure yet if it's this version of Autopsy (4.22.1) or something else. More cases will tell. Anyone else run into this during their investigations?</p>
+    <p class="aside"><em>Rookie tip: don't trust every timestamp on the screen. Check it against the source.</em></p>
+
+    <h2>Hold It! The Spreadsheet</h2>
+    <p>I started with the users. Six accounts were created within about 3 minutes, but only three of them ever logged in. One user had four logins but only one real session. That one went straight into my Court Record as a Psyche-Lock. More on that later.</p>
+    <figure>
+      <img src="images/turnabout-spreadsheet-user-profiles.png" alt="User profiles found on the disk image">
+      <figcaption>Six accounts, three who ever logged in.</figcaption>
+    </figure>
+
+    <p>Digging into the users brought up the spreadsheet in question. It was in two different places, with the same hash. Same file, two locations. <strong>Hold it!</strong> How did it get to the second one?</p>
+    <p>I went through the link files, the prefetch files and every other artifact I could think of. Then I found it: an email address that didn't belong. And right next to it, an email thread between Jean and her boss Alison where the two of them clearly weren't talking about the same thing.</p>
+
+    <h2>Psyche-Lock: Where Did It Come From?</h2>
+    <p>Jean's profile didn't exist on this laptop until 07-06, but the spreadsheet was older than that. So it came from somewhere outside this laptop. Excel didn't show up in UserAssist that night either, which means Jean didn't start it from the Start menu. Another program opened it, and I have a pretty good idea which one.</p>
+    <p>Then there was a USB drive that showed up around the same time. Autopsy cut off the value I needed, so I decoded <code>MountedDevices</code> myself to confirm it was drive E:. It turned out to have nothing to do with the file, but I still wanted to be sure. Leave no stone unturned! Nothing else on the laptop ever mentions E:.</p>
+    <figure>
+      <img src="images/turnabout-spreadsheet-mounteddevices.png" alt="Decoded MountedDevices registry value">
+      <figcaption>Decoding it myself when the tool cut it short.</figcaption>
+    </figure>
+
+    <p>And because Office's file window doesn't save the folder you browse to, one question is still locked: where exactly was the file attached from at 01:27:27?</p>
+
+    <h2>Verdict</h2>
+    <p>After the leak, an email from Jean's colleague Bob showed up. Our classic Larry Butz, totally confused about what was happening! I wanted to know two things: did anyone else email about the file, and did Jean ever visit the website where it ended up? I found no evidence of Jean visiting that website, no attempt to hide what she did, and no other user doing anything about it.</p>
+    <p>So my verdict: <strong>NOT GUILTY!</strong> Jean wasn't a Dahlia after all. She was the victim of a spear-phishing attack.</p>
+    <p>These cases are famous, so beginners probably already know how it ends. But in court, knowing it or assuming it doesn't cut it. You have to prove it.</p>
+
+    <h2>The Locks Still Standing</h2>
+    <p>Cybersecurity and Ace Attorney fans, anyone up for a challenge? Here are a few minor Psyche-Locks I haven't broken yet. Want to give them a try?</p>
+    <p>&#128274; <strong>01:27:27:</strong> where exactly was the spreadsheet attached from?</p>
+    <p>&#128274; <strong>Devon's four logins:</strong> four logins, but only one profile session. Security auditing was off, so the logs won't help. What else could?</p>
+    <p>&#128274; <strong>The machine name:</strong> why did Alison's real emails come from a machine named <code>jean13fbf038a3</code>? My guess is it's just how the scenario was built, but I can't prove it.</p>
+    <p>&#128274; <strong>01:28:</strong> Outlook only keeps sent times to the minute, so "01:28" means some time in that minute. Can anyone pin down the second?</p>
+    <p>If you break one, tag me on <a href="https://linkedin.com/in/fjohra" target="_blank" rel="noopener">LinkedIn</a> and show me how!</p>
+    <p>Jean's name is cleared. Now, where's my next cup of coffee?</p>
+
+    <div class="spoiler">Stuck? &#9888;&#65039; Spoilers ahead: <a href="https://github.com/ftj258/dfir-home-labs/tree/main/02-disk-timeline-analysis/turnabout-spreadsheet" target="_blank" rel="noopener">the full case report</a>, with every step I took.</div>
+  </article>
+
+  <footer>
+    <div class="footer-stamp">
+      <span>F. JOHRA / DFIR</span>
+      <a href="./">All posts</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

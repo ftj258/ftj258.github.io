@@ -16,6 +16,7 @@ window.CASES = [
     kind: "Disk forensics",
     details: "M57-Jean · Windows XP disk image · Autopsy",
     summary: "A spreadsheet with employee names, SSNs and salaries ended up online. I traced it back to a spoofed email posing as the boss.",
-    report: "https://github.com/ftj258/dfir-home-labs/tree/main/02-disk-timeline-analysis/turnabout-spreadsheet"
+    report: "https://github.com/ftj258/dfir-home-labs/tree/main/02-disk-timeline-analysis/turnabout-spreadsheet",
+    post: { page: "turnabout-spreadsheet.html", date: "November 2026", teaser: "Was Jean guilty, or just tricked? A disk forensics case, Ace Attorney style." }
   }
 ];
