@@ -18,5 +18,14 @@ window.CASES = [
     summary: "A spreadsheet with employee names, SSNs and salaries ended up online. I traced it back to a spoofed email posing as the boss.",
     report: "https://github.com/ftj258/dfir-home-labs/tree/main/02-disk-timeline-analysis/turnabout-spreadsheet",
     post: { page: "turnabout-spreadsheet.html", date: "November 2026", teaser: "Was Jean guilty, or just tricked? A disk forensics case, Ace Attorney style." }
+  },
+  {
+    number: 3,
+    title: "Turnabout Sauce",
+    kind: "Incident response",
+    details: "DFIR Madness · Windows DC + desktop · Autopsy, Volatility 3, Wireshark, impacket",
+    summary: "An internet-exposed domain controller was brute-forced over RDP, then hit with malware, a C2 channel and lateral movement. I traced the full intrusion and rebuilt a deleted loot.zip from the metadata it left behind.",
+    report: "https://github.com/ftj258/dfir-home-labs/tree/main/06-incident-response/turnabout-sauce",
+    post: { page: "turnabout-sauce.html", date: "November 2026", teaser: "A domain controller breached over open RDP, a stolen recipe, and a deleted bag of loot. A full intrusion, Ace Attorney style." }
   }
 ];

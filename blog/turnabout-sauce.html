@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turnabout Sauce - Turnabout Forensics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span><a href="../index.html" style="color:inherit;text-decoration:none;">F. JOHRA / DFIR</a></span>
+    <nav>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../labs.html">Labs</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../blog/" aria-current="page" style="color:var(--accent-text);">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <article class="post" style="padding-top:36px;">
+    <p class="eyebrow"><a href="./" style="color:inherit;text-decoration:none;">Turnabout Forensics</a> &middot; Case 3</p>
+    <h1>Turnabout Sauce</h1>
+    <div class="post-meta">November 2026 &middot; Memory &amp; network forensics &middot; Stolen Szechuan Sauce</div>
+
+    <p>Somebody broke into a network and stole a secret recipe for Szechuan sauce. I know how that sounds. But in Ace Attorney, the silliest-sounding cases usually hide the most serious crimes, and this one was no exception: a domain controller taken apart, a secret file forged to cover the tracks, and a bag of loot carried straight out the door. Our thief had the nerve of Mask&#9734;DeMasque himself. As Edgeworth always says, in court, evidence is everything. So I opened the case.</p>
+    <p>The scenario comes from the public <a href="https://dfirmadness.com/the-stolen-szechuan-sauce/" target="_blank" rel="noopener">DFIR Madness "Stolen Szechuan Sauce"</a> dataset. I hashed every piece of evidence first, for the same two reasons I always do: to prove I started on a clean copy, and to prove at the end that I hadn't changed a thing. Originals stayed read-only on a separate drive. I only ever worked from copies.</p>
+
+    <h2>The Witness Who Lied About the Time</h2>
+    <p>Before any of the real drama, the case tried to trip me up. The domain controller's clock was an hour ahead of the network, and I only caught it because every attacker event in the machine's logs matched the packet capture... exactly one hour apart, every single time.</p>
+    <p>That is the witness whose story <em>almost</em> holds together, and the "almost" is what gives him away. If I had trusted one clock, my whole timeline would have been an hour wrong and I would never have known.</p>
+    <p class="aside"><em>Rookie tip: never build a timeline on one clock. Check it against a second source, a capture or another machine's logs. One clock lies with a straight face.</em></p>
+
+    <h2>Hold It! The Open Door</h2>
+    <p>The way in was almost insulting. The DC's RDP was wide open to the internet, the attacker found it with a quick Nmap scan, and then just started guessing. <strong>Hold it!</strong> Ninety-five failed Administrator logons in a single minute. No human fat-fingers a password ninety-five times in sixty seconds. That is a machine with a wordlist. And then the ninety-sixth worked, because there was no lockout to stop it. The door wasn't picked. It was left open, and someone walked in.</p>
+
+    <h2>Take That! coreupdater.exe</h2>
+    <p>I pulled a timeline, filtered it to executables, and one file raised its hand like a guilty witness: <code>coreupdater.exe</code>, sitting in <code>System32</code>, born two minutes after the attacker logged in, while every real file around it was dated install day. An "updater" that shows up right after a break-in, in the one folder where it can hide in plain sight? I took its hash to VirusTotal.</p>
+    <p><strong>Take that!</strong> 64 of 71 vendors flagged it, a Metasploit loader that calls home and pulls down a bigger payload. Then it got sneaky: in memory it escalated to SYSTEM, slipped into <code>spoolsv.exe</code>, the humble Print Spooler, and exited, leaving its connection running inside a process nobody ever suspects. Commit the crime, then go wear someone else's face.</p>
+
+    <h2>Mask&#9734;DeMasque's Forgery</h2>
+    <p>Here is the part that actually made me mad, in a very Phoenix-seeing-a-note-he-misreads kind of way. On the DC, the attacker opened the secret files, and one of them, <code>SECRET_beth.txt</code>, they edited, deleted, and replaced. The original said "Earth beth is the real beth." The planted one said "Space Beth is the real Beth." The exact opposite. And they dressed the fake in stolen timestamps copied from another file to make it look like it had been there since day one.</p>
+    <p><strong>Objection!</strong> That is not just theft, that is tampering with evidence and planting a false version. A move worthy of Mask&#9734;DeMasque. But time-stomping always leaves a seam: the shortcut pointing at the forgery was created a full day <em>after</em> the timestamps it was pretending to have. Costume spotted.</p>
+
+    <h2>Following the Loot</h2>
+    <p>The desktop timeline turned up a file called <code>loot.zip</code>, opened during the attack. With a name like that, it had my full attention. I searched everywhere and found nothing. No <code>loot.zip</code> on either machine, not even a deleted one. The bag was gone.</p>
+    <p>So did it leave the building? I filtered the capture for big outbound packets, and there it was: about 128 KB fired to the attacker's server in roughly two milliseconds, 48 seconds after <code>loot.zip</code> was opened. On the I/O graph it towers over the whole hour like a single spike on a flat field. Can you spot the moment the loot left the building? That is it.</p>
+    <p>But I still didn't know what was <em>inside</em> it. The zip was deleted and its record overwritten, so recovery was a dead end. So I did the next best thing. The shortcut it left behind still remembered the bag's exact weight: 131,041 bytes. And three files in the user's Documents were read in that same three-second window.</p>
+    <pre><code>Portal_gun.png              130,678
+Plans.txt                       141
+My Social Security Number.txt    22
+-------------------------------------
+Total                       130,841
+loot.zip (from the shortcut)131,041
+Difference                      200</code></pre>
+    <p>A 200-byte gap, exactly a zip's overhead for three files. <strong>Gotcha!</strong> The attacker burned the bag, and I rebuilt it anyway, from the receipt and the weight. Just like <em>The Stolen Turnabout</em>: the treasure is gone, but the thief always leaves a trace.</p>
+
+    <h2>Two Hideouts</h2>
+    <p>Our Mask&#9734;DeMasque had not one hideout but two. The break-in and the malware came from an address in Moscow; the command-and-control server, the one the malware called home to, was in Bangkok. Two countries, two providers. The attacker split the jobs on purpose: if one gets blocked, the other keeps working.</p>
+    <p>One nice touch, courtesy of VirusTotal: it independently lists our malware as talking to that same C2 server. A public, outside witness, backing up what I found in the capture and in memory. (And half the other files it flagged were clearly other investigators' uploads of this same case. Somewhere out there, an Edgeworth and a Gumshoe were working the exact same crime scene. Pal, you're not alone out here.)</p>
+
+    <h2>The Final Gotcha</h2>
+    <p>One question left. Those 95 failures were all chasing one password. What was it? I pulled the domain's credential database off the DC, dumped the hashes, and took the Administrator hash to a cracker.</p>
+    <p>It came back in seconds: <code>)&amp;Denver89</code>.</p>
+    <p>And here is the twist I didn't see coming. That password <em>looks</em> bulletproof. Upper case, lower case, numbers, two symbols, ten characters. It would pass any complexity policy with a gold star pinned to it. But it cracked instantly, because it was already sitting in a public breach list. The fancy lock everyone already had the key to. Complexity was never the problem. The password was known, reused, and guarded by no lockout at all.</p>
+
+    <h2>Verdict</h2>
+    <p>So here is the confession, pieced together from witnesses who couldn't lie as well as they thought: RDP left open to the internet, a known and reused Administrator password, no lockout, malware in, SYSTEM up, C2 out, a hop to the desktop on the stolen login, a forged note, and the user's files zipped and shipped to Bangkok. And the attacker was still connected when the evidence was collected.</p>
+    <p>The defendant in that chair is very much <strong>guilty</strong>. The fix isn't exotic: get RDP off the open internet behind a VPN or gateway with MFA, give accounts unique passwords screened against breach lists, turn on a lockout, and above all, watch your own network, because nobody saw any of this happen at the time.</p>
+
+    <h2>The Locks Still Standing</h2>
+    <p>Cybersecurity and Ace Attorney fans, up for a challenge? Two Psyche-Locks I left honestly unbroken, because a good detective knows the difference between "I think" and "I proved":</p>
+    <p>&#128274; <strong>Who pulled the trigger?</strong> The process that launched <code>coreupdater.exe</code> had already exited before memory was captured, so I couldn't name its parent. The timing screams "the attacker, by hand," but screaming isn't proof.</p>
+    <p>&#128274; <strong>Was the sauce itself in the bag?</strong> The recipe was opened on screen over RDP. The DC sent no bulk upload, and the C2 traffic is encrypted, so whether that one 478-byte file left the network, I can't say either way.</p>
+    <p>If you crack one, tag me on <a href="https://linkedin.com/in/fjohra" target="_blank" rel="noopener">LinkedIn</a> and show me how.</p>
+    <p>The sauce is still missing, but the thief is caught. Now, where's my next cup of coffee?</p>
+
+    <div class="spoiler">Stuck? &#9888;&#65039; Spoilers ahead: <a href="https://github.com/ftj258/dfir-home-labs/tree/main/06-incident-response/turnabout-sauce" target="_blank" rel="noopener">the full case report</a>, with every step I took.</div>
+  </article>
+
+  <footer>
+    <div class="footer-stamp">
+      <span>F. JOHRA / DFIR</span>
+      <a href="./">All posts</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
