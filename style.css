@@ -1,19 +1,19 @@
 :root{
-  --bg: #121315;
-  --paper: #1b1c1f;
-  --ink: #D6DADF;
-  --ink-soft: #A9B4C4;
-  --navy: #D6DADF;
-  --navy-soft: #C6D0DE;
-  --line: rgba(255,255,255,0.10);
-  --line-strong: rgba(255,255,255,0.20);
-  --accent: #191970;
-  --accent-text: #5FC2B8;
-  --accent-soft: rgba(25,25,112,0.24);
-  --active: #7FB89E;
-  --active-soft: rgba(127,184,158,0.14);
-  --closed: #A39C8E;
-  --closed-soft: rgba(163,156,142,0.14);
+  --bg: #2E0E1B;
+  --paper: #3E1327;
+  --ink: #F2E8DC;
+  --ink-soft: #C4AE9C;
+  --navy: #F7F0E7;
+  --navy-soft: #E8DCCE;
+  --line: rgba(242,232,220,0.12);
+  --line-strong: rgba(242,232,220,0.22);
+  --accent: #CBA85A;
+  --accent-text: #D7B86A;
+  --accent-soft: rgba(203,168,90,0.14);
+  --active: #86BE9A;
+  --active-soft: rgba(134,190,154,0.16);
+  --closed: #BBAA8C;
+  --closed-soft: rgba(187,170,140,0.16);
   --serif: 'Source Serif 4', Georgia, serif;
   --sans: 'IBM Plex Sans', -apple-system, sans-serif;
   --mono: 'IBM Plex Mono', 'Courier New', monospace;
@@ -38,7 +38,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 
 /* ---------- Top bar ---------- */
 .topbar{
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--accent);
   background: var(--paper);
   position: sticky; top: 0; z-index: 20;
 }
@@ -94,7 +94,7 @@ section:first-of-type{ border-top: none; }
   color: var(--accent-text); margin: 0 0 8px;
 }
 h2{
-  font-family: var(--serif); font-weight: 600; font-size: 1.5rem; color: var(--accent-text);
+  font-family: var(--serif); font-weight: 600; font-size: 1.5rem; color: var(--navy);
   margin: 0 0 12px;
 }
 
