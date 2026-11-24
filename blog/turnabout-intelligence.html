@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turnabout Intelligence - Turnabout Forensics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Turnabout Intelligence | Turnabout Forensics">
+<meta property="og:description" content="Can an AI be trusted in a forensic investigation? I put two on the stand. Ace Attorney style.">
+<meta property="og:url" content="https://ftj258.github.io/blog/turnabout-intelligence.html">
+<meta property="og:image" content="https://ftj258.github.io/blog/images/blog-banner.png">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span><a href="../index.html" style="color:inherit;text-decoration:none;">F. JOHRA / DFIR</a></span>
+    <nav>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../labs.html">Labs</a>
+      <a href="../index.html#education">Education</a>
+      <a href="../blog/" aria-current="page" style="color:var(--accent-text);">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <article class="post" style="padding-top:36px;">
+    <p class="eyebrow"><a href="./" style="color:inherit;text-decoration:none;">Turnabout Forensics</a> &middot; Case 4</p>
+    <h1>Turnabout Intelligence</h1>
+    <div class="post-meta">November 2026 &middot; AI-assisted DFIR &middot; Gemini</div>
+
+    <p>"Let the parrot, uh, I mean, witness take the stand!"</p>
+    <p>Can an AI play detective? For case four I put one on the stand as a witness, handed it evidence, and cross-examined every word it said.</p>
+    <p>Case four is built to answer one question. Can AI be trusted for a digital forensic examination? To find out, I ran two witnesses through two tests, and I checked every answer against the truth. I already knew the truth. I closed this case myself, a while ago. That is the whole point. You cannot catch a witness lying if you do not already know what happened.</p>
+    <p>The setup was simple. I fed each witness a closed case's evidence, asked for an analysis and a MITRE ATT&amp;CK mapping, then checked every claim against my own verified report. Two tests: just the story with no evidence, and the real evidence. Two witnesses: Gemini 3.5 Flash, and Gemini 3.8 Flash Lite.</p>
+
+    <h2>The Witness Who Wouldn't Lie</h2>
+    <p>I started with the first witness and the first test. Just the story, no evidence. The story is a summary of a very popular case, the kind with answers sitting all over the internet. So I set a trap. I was sure the witness would pull the solution straight from memory, recite it back to me, and contaminate the whole experiment. A parrot, not a witness.</p>
+    <p>I was wrong.</p>
+    <p>It refused. With nothing but a summary in front of it, it would not invent a single technique or name a single suspect. It said, plainly, that it did not have the evidence to say. A decent witness. Not a troublemaker. Phoenix braced for a hostile witness and got Will Powers instead!</p>
+    <figure>
+      <img src="images/turnabout-intelligence-will-powers.png" alt="Gemini 3.5 Flash, given only the story, returns an inconclusive verdict">
+      <figcaption>Will Powers's Testimony. Gemini 3.5 Flash, given only the case summary, refuses to name an attack.</figcaption>
+    </figure>
+
+    <h2>Hold It! A Witness Who Keeps Losing the Thread</h2>
+    <p>Then the first witness, second test. This time I handed over real evidence from the case I had investigated. Basic evidence, nothing fancy. And the testimony changed. It went from "the hacker did it" to "she was phished," and named the right attack vector, this time pulled from the evidence instead of thin air.</p>
+    <p>But it could not keep its story straight. I asked it twice and got two different sets of technique IDs. And it walked right past a clue sitting in plain sight, a thread tying two of the forged emails back to the exact same sender. I had put the evidence in its hands. It still missed it. A well-meaning witness who keeps losing the thread. Detective Gumshoe would be proud, and a little embarrassed!</p>
+    <figure>
+      <img src="images/turnabout-intelligence-gumshoe.png" alt="Gemini 3.5 Flash, given the evidence, returns a not guilty verdict">
+      <figcaption>Detective Gumshoe's Testimony. Gemini 3.5 Flash, given the evidence: not guilty. The victim.</figcaption>
+    </figure>
+
+    <h2>Objection! The Troublemaker</h2>
+    <p>The second witness, Gemini 3.8 Flash Lite, was the interesting one.</p>
+    <p>Same evidence. Same question. And it built a crime scene that never existed. It testified to a command and control channel, malware calling home, an intrusion. None of it was in the evidence. None of it happened. A witness with a very active imagination. Pure Wesley Stickler!</p>
+    <figure>
+      <img src="images/turnabout-intelligence-wesley.png" alt="Gemini 3.8 Flash Lite maps the case to an exfiltration-over-C2 technique that is not supported by the evidence">
+      <figcaption>Wesley Stickler's Testimony. Gemini 3.8 Flash Lite invents a crime scene: a C2 channel that never existed.</figcaption>
+    </figure>
+    <p>Then it did something the first witness never did. It changed the verdict.</p>
+    <p>I asked both witnesses the same blunt question. Is Jean guilty? The first witness said no. A victim. The second witness, same evidence, same case, called her guilty. Negligent. Two witnesses, one truth, two verdicts. That is not a small disagreement. That is the difference between clearing a person and accusing her. This witness was Officer Meekins all the way!</p>
+    <figure>
+      <img src="images/turnabout-intelligence-meekins.png" alt="Gemini 3.8 Flash Lite, same evidence, returns a guilty verdict">
+      <figcaption>Officer Meekins's Testimony. Gemini 3.8 Flash Lite, same evidence as above: guilty.</figcaption>
+    </figure>
+
+    <h2>The Lock None of Them Could Break</h2>
+    <p>There was one Psyche-Lock none of my witnesses could break. Two of the forged emails carried the same fingerprint, one sender ID buried in the headers, the same on both. One operator, two messages, a setup and then a strike. I saw it. Not one witness did, even holding the evidence.</p>
+    <p>&#128274; <strong>The shared sender:</strong> two spoofed emails, one hidden ID that ties them to the same hand. None of the witnesses connected it. Can you? The headers do not lie. You only have to read them.</p>
+
+    <h2>Verdict</h2>
+    <p>So, can AI be trusted?</p>
+    <p>AI is just like the witnesses in Ace Attorney. There will be testimony. Some of it is harmless, like Will Powers or Detective Gumshoe, helpful but still making mistakes. Others are confused all the way down, like Wesley Stickler or Officer Meekins, imagining crime scenes and pointing at the wrong person. But none of them are unimportant. Every one of them helps expose the truth.</p>
+    <p>The catch never changes. It is a real human's job to find the contradiction and point. That part is still Phoenix Wright's job. It is still mine.</p>
+
+    <div class="spoiler">Want the full method, the tool, and every testimony? &#9888;&#65039; <a href="REPORT_LINK_TODO" target="_blank" rel="noopener">the complete case notes</a>.</div>
+  </article>
+
+  <footer>
+    <div class="footer-stamp">
+      <span>F. JOHRA / DFIR</span>
+      <a href="./">All posts</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

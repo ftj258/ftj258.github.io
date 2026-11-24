@@ -55,7 +55,7 @@
     body.appendChild(el('p','case-org',c.details));
     var ul=el('ul'); ul.appendChild(el('li',null,c.summary)); body.appendChild(ul);
     var links=el('div','case-links');
-    links.appendChild(link(c.report,'Read the case report →',true));
+    if(c.report) links.appendChild(link(c.report,'Read the case report →',true));
     if(c.post) links.appendChild(link('blog/'+c.post.page,'Read the blog post →',false));
     body.appendChild(links);
     card.appendChild(head); card.appendChild(body); list.appendChild(card);
