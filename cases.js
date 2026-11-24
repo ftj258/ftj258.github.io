@@ -25,7 +25,7 @@ window.CASES = [
     kind: "Incident response",
     details: "DFIR Madness · Windows DC + desktop · Autopsy, Volatility 3, Wireshark, impacket",
     summary: "An internet-exposed domain controller was brute-forced over RDP, then hit with malware, a C2 channel and lateral movement. I traced the full intrusion and rebuilt a deleted loot.zip from the metadata it left behind.",
-    report: "https://github.com/ftj258/dfir-home-labs/tree/main/06-incident-response/turnabout-sauce",
+    report: "https://github.com/ftj258/dfir-home-labs/tree/main/03-incident-response/turnabout-sauce",
     post: { page: "turnabout-sauce.html", date: "November 2026", teaser: "A domain controller breached over open RDP, a stolen recipe, and a deleted bag of loot. A full intrusion, Ace Attorney style." }
   },
   {
@@ -34,6 +34,7 @@ window.CASES = [
     kind: "AI-assisted DFIR",
     details: "Gemini 3.5 Flash & 3.8 Flash Lite · M57-Jean evidence · Python",
     summary: "I put two AI models on the stand as witnesses, fed them a case I'd already solved, and checked every word. Two witnesses, same evidence, two different verdicts.",
+    report: "https://github.com/ftj258/dfir-home-labs/tree/main/04-ai-assisted-dfir/turnabout-intelligence",
     post: { page: "turnabout-intelligence.html", date: "November 2026", teaser: "Can an AI be trusted in a forensic investigation? I put two on the stand. Ace Attorney style." }
   }
 ];
